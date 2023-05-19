@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- META -->
+    <title>PSHS - IRC LIMS</title>
+    <meta charset="utf-8">
+    <meta name="description" content="PSHS - IRC Lost Items Management System">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+
+    <!-- ICONS -->
+    <link rel="icon" href="system/images/PSHS_System_Logo.png" type="image/png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="white">
+    <link rel="apple-touch-icon" href="system/images/icon-512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PSHS IRC LIMS">
+    <meta name="msapplication-TileImage" content="system/images/PSHS_System_Logo.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <!-- CSS + JS -->
+    <link rel="stylesheet" href="system/LIMS CSS.css">
+    <script src="system/LIMS-db.js"></script>
+    <script src="system/LIMS-items.js"></script>
+    <script src="system/LIMS JS.js"></script>
+  </head>
+  <body>
+    <center><img src="system/images/PSHS_System_Logo.png" width="128" height="128"></center>
+    <center><h1>PSHS - IRC Lost Items Management System (LIMS)</h1></center>
+    <!--ITEMS LIST -->
+    <div id="pgA" class="ninja">
+      <div id="itemAdd" onclick="items.addEdit()">Add Item</div>
+      <div id="itemList" class="zebra"></div>
+    </div>
+
+    <!-- (B) PAGE B : ADD ITEM -->
+    <form id="pgB" class="ninja" onsubmit="items.save(); return false;">
+      <label>DATE</label>
+      <script>var date = new Date().toLocaleDateString();
+      document.write(date);</script><br>
+      <br><label for="dept">DEPARTMENT</label>
+      <select name="dept" id="deptsku">
+        <optgroup label="DEPARTMENT">
+          <option value="drm">DORM</option>
+          <option value="dof">DISCIPLINE OFFICER</option>
+        </optgroup>
+      </select><br>
+      <label>Name / Brand</label>
+      <input type="text" required id="itemName"><br>
+      <label>Description</label>
+      <input type="text" required id="itemDesc"><br>
+      <label>SKU</label>
+      <input type="hidden" id="itemOSKU">
+      <input id="inp1" type="text"  value="NAME / BRAND"> <br>
+      <input id="inp2" type="text"  value="DESCRIPTION"> <br>
+      <input id="num1" type="text"  value="YEAR"> <br>
+      <center><button onclick="getSKU()">SAVE SKU</button></center><br><br>
+      <input id="output" type="text"  value="">
+      <p id="copymsg"></p>
+      <div id="itemGo" class="flex">
+        <input type="button" value="Back" onclick="inv.pg('A')">
+        <input type="submit" value="Save">
+      </div>
+    </form>
+  </body>
+</html>
